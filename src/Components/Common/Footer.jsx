@@ -1,23 +1,26 @@
 import React from 'react'
 import logo from "../../assets/logo.jpeg";
+import { Link } from 'react-router';
 
 export default function Footer() {
   return (
     <>
 
       <footer className="bg-slate-950 text-gray-300">
-        <div className="max-w-screen-2xl mx-auto px-2 lg:px-4 py-14">
+        <div className="max-w-screen-2xl mx-auto px-6 lg:px-16 sm:px-10 py-14">
 
           {/* Top Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
 
             {/* Logo & Description */}
             <div className="lg:col-span-2">
+              <Link to="/">
               <img
                 src={logo}
                 alt="Logo"
                 className="h-28 w-36 object-contain"
               />
+              </Link>
 
               <p className="mt-4 text-gray-400 leading-relaxed max-w-md">
                 Empowering learners with industry-ready courses,
@@ -64,7 +67,7 @@ export default function Footer() {
               </h3>
 
               <ul className="space-y-3">
-                <li><a href="#" className="hover:text-indigo-400 transition">Home</a></li>
+                <li><Link to="/" className="hover:text-indigo-400 transition">Home</Link></li>
                 <li><a href="#" className="hover:text-indigo-400 transition">Courses</a></li>
                 <li><a href="#" className="hover:text-indigo-400 transition">About Us</a></li>
                 <li><a href="#" className="hover:text-indigo-400 transition">Contact</a></li>

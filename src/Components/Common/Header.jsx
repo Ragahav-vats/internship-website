@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from "react";
 import logo from "../../assets/logo.jpeg";
+import { Link } from 'react-router';
 
 const NAV_LINKS = [
   { label: "Courses", href: "#" },
@@ -11,11 +12,16 @@ const NAV_LINKS = [
   { label: "Schooling Programs", href: "#" },
 ];
 
+// const PRODUCTS = [
+//   { emoji: "🚀", label: "Launch Tools", bg: "bg-indigo-100", href: "#" },
+//   { emoji: "📊", label: "Analytics", bg: "bg-purple-100", href: "#" },
+//   { emoji: "🔒", label: "Security", bg: "bg-cyan-100", href: "#" },
+// ];
+
 const PRODUCTS = [
-  { emoji: "🚀", label: "Launch Tools", bg: "bg-indigo-100", href: "#" },
-  { emoji: "📊", label: "Analytics", bg: "bg-purple-100", href: "#" },
-  { emoji: "🔒", label: "Security", bg: "bg-cyan-100", href: "#" },
-];
+  {label:"Internship", href: "#"},
+  {label:"Summer Internship", href: "#" }
+]
 
 export default function Header() {
 
@@ -41,13 +47,13 @@ export default function Header() {
           <div className="flex items-center justify-between h-16 md:h-20">
 
             {/* ── LOGO ── */}
-            <a href="#" className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
               <img
                 src={logo}
                 alt="Logo"
                 className="w-40 h-22 object-contain"
               />
-            </a>
+            </Link>
 
             {/* ── DESKTOP NAV ── */}
             <nav className="hidden md:flex items-center gap-7">
@@ -73,8 +79,9 @@ export default function Header() {
 
                     {/* Dropdown */}
                     <div
-                      className="absolute top-full left-0 mt-3 w-56
-             bg-white-100 rounded-2xl border border-gray-200 py-2
+                       className="absolute top-full left-0 mt-3 w-56
+             bg-white rounded-2xl border border-gray-200 py-2
+             shadow-xl
              opacity-0 invisible
              group-hover:opacity-100 group-hover:visible
              transition-all duration-300
@@ -126,8 +133,13 @@ export default function Header() {
 
                 {/* Dropdown panel */}
                 <div
-                  className="absolute top-full left-0 mt-3 w-52 hidden group-hover:block
-                           bg-white/90 backdrop-blur-xl rounded-2xl border border-white/60 py-2 z-50"
+                   className="absolute top-full left-0 mt-3 w-56
+             bg-white rounded-2xl border border-gray-200 py-2
+             shadow-xl
+             opacity-0 invisible
+             group-hover:opacity-100 group-hover:visible
+             transition-all duration-300
+             z-50"
                   style={{ boxShadow: "0 8px 32px rgba(99,102,241,.14)" }}
                 >
                   {PRODUCTS.map(({ emoji, label, bg, href }) => (
@@ -255,7 +267,7 @@ export default function Header() {
           className="md:hidden overflow-hidden transition-all duration-300 ease-in-out"
           style={{ maxHeight: menuOpen ? "500px" : "0px", opacity: menuOpen ? 1 : 0 }}
         >
-          <div className="bg-white/70 backdrop-blur-xl border-t border-white/40 px-4 py-4 space-y-1">
+          <div className="bg-white backdrop-blur-xl border-t border-white/40 px-4 py-4 space-y-1">
 
             {/* Active: Home */}
             <div className="relative group">
@@ -306,7 +318,7 @@ export default function Header() {
                 onClick={() => setProductOpen((p) => !p)}
                 className="flex items-center justify-between w-full px-3 py-2.5 rounded-xl
                          text-sm font-medium text-gray-700 hover:bg-indigo-50
-                         hover:text-indigo-600 transition-colors duration-200"
+                         hover:text-indigo-600 transition-colors duration-500"
               >
                 <span className="flex items-center gap-3">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24"
@@ -314,10 +326,10 @@ export default function Header() {
                     <path strokeLinecap="round" strokeLinejoin="round"
                       d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                   </svg>
-                  Products
+                  Internship
                 </span>
                 <svg
-                  className="w-4 h-4 text-gray-400 transition-transform duration-200"
+                  className="w-4 h-4 text-gray-400 transition-transform duration-500"
                   style={{ transform: productOpen ? "rotate(180deg)" : "" }}
                   fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
@@ -325,15 +337,14 @@ export default function Header() {
               </button>
 
               <div
-                className="overflow-hidden transition-all duration-300 ease-in-out pl-7 space-y-0.5"
-                style={{ maxHeight: productOpen ? "200px" : "0px" }}
+                className="overflow-hidden transition-all duration-500 ease-in-out pl-7 space-y-0.5"
+                style={{ maxHeight: productOpen ? "400px" : "0px" }}
               >
-                {PRODUCTS.map(({ emoji, label, href }) => (
+                {PRODUCTS.map(({ label, href }) => (
                   <a key={label} href={href}
-                    className="flex items-center gap-3 px-3 py-2 rounded-xl text-xs
-                              font-medium text-gray-500 hover:bg-indigo-50 hover:text-indigo-600
-                              transition-colors duration-200">
-                    <span className="text-base">{emoji}</span>
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm
+                              font-bold text-blue-600 hover:bg-indigo-50 hover:text-blue-700
+                              transition-colors duration-500">
                     {label}
                   </a>
                 ))}
