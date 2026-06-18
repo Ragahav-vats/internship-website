@@ -246,7 +246,7 @@ export default function Home() {
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
 
-    const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(0);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -1071,69 +1071,67 @@ export default function Home() {
         </div>
       </section>
 
-        <section className="w-full py-20 bg-gradient-to-b from-white to-slate-50">
-      <div className="max-w-7xl mx-auto px-5 lg:px-10">
-        
-        {/* Heading */}
-        <div className="text-center mb-14">
-          <span className="text-blue-600 font-semibold uppercase tracking-wider">
-            FAQs
-          </span>
+      <section className="w-full py-20 bg-gradient-to-b from-white to-slate-50">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10">
 
-          <h2 className="mt-3 text-4xl md:text-5xl font-bold text-gray-900">
-            Frequently Asked
-            <span className="text-blue-600"> Questions</span>
-          </h2>
+          {/* Heading */}
+          <div className="text-center mb-14">
+            <span className="text-blue-600 font-semibold uppercase tracking-wider">
+              FAQs
+            </span>
 
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-            Find answers to common questions about our courses,
-            masterclasses, and platform.
-          </p>
-        </div>
+            <h2 className="mt-3 text-4xl md:text-5xl font-bold text-gray-900">
+              Frequently Asked
+              <span className="text-blue-600"> Questions</span>
+            </h2>
 
-        {/* FAQ Items */}
-        <div className="space-y-5">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="bg-white border border-slate-200 rounded-3xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
-            >
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full flex items-center justify-between p-6 md:p-8 text-left"
+            <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+              Find answers to common questions about our courses,
+              masterclasses, and platform.
+            </p>
+          </div>
+
+          {/* FAQ Items */}
+          <div className="space-y-5">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="bg-white border border-slate-200 rounded-3xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
               >
-                <h3 className="text-lg md:text-xl font-semibold text-gray-900">
-                  {faq.question}
-                </h3>
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full flex items-center justify-between p-6 md:p-8 text-left"
+                >
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-900">
+                    {faq.question}
+                  </h3>
+
+                  <div
+                    className={`flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white transition-transform duration-300 ${openIndex === index ? "rotate-180" : ""
+                      }`}
+                  >
+                    <ChevronDown size={20} />
+                  </div>
+                </button>
 
                 <div
-                  className={`flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
+                  className={`grid transition-all duration-500 ease-in-out ${openIndex === index
+                      ? "grid-rows-[1fr] opacity-100"
+                      : "grid-rows-[0fr] opacity-0"
+                    }`}
                 >
-                  <ChevronDown size={20} />
-                </div>
-              </button>
-
-              <div
-                className={`grid transition-all duration-500 ease-in-out ${
-                  openIndex === index
-                    ? "grid-rows-[1fr] opacity-100"
-                    : "grid-rows-[0fr] opacity-0"
-                }`}
-              >
-                <div className="overflow-hidden">
-                  <div className="px-6 md:px-8 pb-8 text-gray-700 leading-relaxed text-base md:text-lg font-semibold">
-                    {faq.answer}
+                  <div className="overflow-hidden">
+                    <div className="px-6 md:px-8 pb-8 text-gray-700 leading-relaxed text-base md:text-lg font-semibold">
+                      {faq.answer}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-      </div>
-    </section>
+        </div>
+      </section>
 
     </>
   )

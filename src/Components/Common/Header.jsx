@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { label: "Contact", href: "#" },
   { label: "Blogs", href: "#" },
   { label: "Schooling Programs", href: "#" },
+  // { label: "Internship", to: "/internship" },
 ];
 
 // const PRODUCTS = [
@@ -116,11 +117,10 @@ export default function Header() {
                 )
               )}
 
-              {/* Masterclasses section */}
-
 
               {/* Products dropdown */}
               <div className="relative group">
+                <Link to="/internship">
                 <button className="flex items-center gap-1 text-sm font-medium text-gray-600
                                  hover:text-indigo-500 transition-colors duration-500 focus:outline-none">
                   Internship
@@ -130,6 +130,7 @@ export default function Header() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
+                </Link>
 
                 {/* Dropdown panel */}
                 <div
@@ -201,8 +202,8 @@ export default function Header() {
                                    transition-colors px-2">
                 Log in
               </a> */}
-              <a
-                href="#"
+              <Link
+                to="/login"
                 className="text-white text-sm font-semibold px-5 py-2 rounded-xl
                          transition-all duration-200 hover:scale-105"
                 style={{
@@ -210,8 +211,8 @@ export default function Header() {
                   boxShadow: "0 2px 16px rgba(99,102,241,.28)",
                 }}
               >
-                Sign In/Register
-              </a>
+                Sign In/Register →
+              </Link>
             </div>
 
             {/* ── MOBILE: icons + hamburger ── */}
@@ -362,19 +363,19 @@ export default function Header() {
 
             {/* CTA */}
             <div className="pt-3 pb-1 flex flex-col gap-2">
-              <a href="#"
+              {/* <a href="#"
                 className="text-center px-4 py-2.5 rounded-xl text-sm font-medium text-gray-700
                           border border-gray-200 hover:border-indigo-300 hover:text-indigo-600
                           transition-all">
                 Log in
-              </a>
+              </a> */}
               <a
                 href="#"
                 className="text-center text-white text-sm font-semibold px-4 py-2.5 rounded-xl
                          transition-all duration-200 hover:scale-105"
                 style={{ background: "linear-gradient(135deg,#6366f1,#8b5cf6)" }}
               >
-                Get Started →
+                Log In/Register →
               </a>
             </div>
           </div>
