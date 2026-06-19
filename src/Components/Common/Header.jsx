@@ -20,8 +20,8 @@ const NAV_LINKS = [
 // ];
 
 const PRODUCTS = [
-  {label:"Internship", href: "#"},
-  {label:"Summer Internship", href: "#" }
+  {label:"Internship program", to: "/program"},
+  {label:"Summer Internship program",  to: "/Summer Internship program" }
 ]
 
 export default function Header() {
@@ -143,15 +143,15 @@ export default function Header() {
              z-50"
                   style={{ boxShadow: "0 8px 32px rgba(99,102,241,.14)" }}
                 >
-                  {PRODUCTS.map(({ emoji, label, bg, href }) => (
-                    <a key={label} href={href}
+                  {PRODUCTS.map(({ emoji, label, bg, to }) => (
+                    <Link key={label} to={to}
                       className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700
                                 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
                       <span className={`w-6 h-6 rounded-lg ${bg} flex items-center justify-center text-xs`}>
                         {emoji}
                       </span>
                       {label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>

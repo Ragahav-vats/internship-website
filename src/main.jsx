@@ -6,6 +6,7 @@ import Home from "./Components/Home";
 import './assets/Css/style.css';
 import Login from "./Components/Login";
 import Internship from "./Components/Internship";
+import InternshipProgram from "./subComponents/InternshipProgram";
 
 
 const root = document.getElementById("root");
@@ -17,6 +18,7 @@ ReactDOM.createRoot(root).render(
       <Route path="/" element={<Home/>} />
       <Route path="/login" element={<Login/>} />
       <Route path="/internship" element={<Internship/>} />
+      <Route path="/program" element={<InternshipProgram/>} />
       </Route>
     </Routes>
   </BrowserRouter>,

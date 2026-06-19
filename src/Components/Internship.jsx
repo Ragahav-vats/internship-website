@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 
@@ -165,7 +166,7 @@ function NavBar() {
     return (
         <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-              
+
                 <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center">
                         <span className="text-white font-bold text-sm">I</span>
@@ -173,14 +174,14 @@ function NavBar() {
                     <span className="font-bold text-slate-800 text-lg tracking-tight">Internly</span>
                 </div>
 
-                
+
                 <div className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-500">
                     {["Browse", "Companies", "Resources", "Blog"].map(l => (
                         <button key={l} className="hover:text-indigo-600 transition-colors">{l}</button>
                     ))}
                 </div>
 
-               
+
                 <div className="hidden md:flex items-center gap-3">
                     <button className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors px-3 py-1.5">Log in</button>
                     <button className="text-sm font-semibold text-white px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 hover:opacity-90 transition shadow-sm">
@@ -188,7 +189,7 @@ function NavBar() {
                     </button>
                 </div>
 
-            
+
                 <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden p-2 rounded-lg text-slate-500 hover:text-indigo-600">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
                         {menuOpen ? <><path d="M18 6L6 18" /><path d="M6 6l12 12" /></> : <><path d="M3 12h18" /><path d="M3 6h18" /><path d="M3 18h18" /></>}
@@ -196,7 +197,7 @@ function NavBar() {
                 </button>
             </div>
 
-           
+
             {menuOpen && (
                 <div className="md:hidden bg-white border-t border-slate-100 px-4 py-4 flex flex-col gap-3 text-sm font-medium text-slate-600">
                     {["Browse", "Companies", "Resources", "Blog"].map(l => (
@@ -450,6 +451,39 @@ function CTABanner() {
     );
 }
 
+const faqs = [
+    {
+        question: "Who can apply for this program?",
+        answer:
+            "Any college student currently enrolled in a recognized institution can apply. No prior technical experience is required for beginner-level tracks.",
+    },
+    {
+        question: "What is the schedule for the 15-day program?",
+        answer:
+            "The program includes daily live sessions, practical assignments, project-based learning activities, and mentorship support.",
+    },
+    {
+        question: "Is there a fee for this internship program?",
+        answer:
+            "Yes, a nominal registration fee may apply depending on the selected track and learning resources provided.",
+    },
+    {
+        question: "Will I get a certificate after completion?",
+        answer:
+            "Yes, all eligible participants who complete the program requirements will receive a verified certificate.",
+    },
+    {
+        question: "What if I miss a session?",
+        answer:
+            "No worries. Recorded sessions and study materials will be available so you can catch up anytime.",
+    },
+    {
+        question: "Is placement guaranteed after the program?",
+        answer:
+            "While placement is not guaranteed, outstanding performers may receive interview and internship opportunities.",
+    },
+]
+
 // ─── Main Page ──────────────────────────────────────────────────────────────
 
 
@@ -475,6 +509,13 @@ export default function Internship() {
 
     const internships = filtered.filter(c => c.type === "internship");
     const summers = filtered.filter(c => c.type === "summer");
+
+    const [openIndex, setOpenIndex] = useState(0);
+
+    const toggleFAQ = (index) => {
+        setOpenIndex(openIndex === index ? null : index);
+    };
+
     return (
         <>
             <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50/30 to-violet-50/20">
@@ -605,6 +646,364 @@ export default function Internship() {
                     </p>
                 </main>
             </div>
+
+            <section className="py-20 bg-gradient-to-b from-white via-slate-50 to-white">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8">
+
+                    {/* Heading */}
+                    <div className="text-center max-w-3xl mx-auto mb-16">
+                        <span className="inline-flex items-center px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 text-sm font-semibold border border-indigo-100">
+                            ✨ WHY THIS PROGRAM
+                        </span>
+
+                        <h2 className="mt-6 text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+                            Everything you need to go from{" "}
+                            <span className="bg-gradient-to-r from-indigo-600 to-pink-500 bg-clip-text text-transparent">
+                                classroom to career
+                            </span>
+                        </h2>
+
+                        <p className="mt-5 text-lg text-slate-600">
+                            A fast-tracked, mentor-led experience built for ambitious students.
+                        </p>
+                    </div>
+
+                    {/* Cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 w-full">
+
+                        {/* Card 1 */}
+                        <div className="group relative bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-all"></div>
+
+                            <div className="w-16 h-16 rounded-2xl bg-indigo-100 flex items-center justify-center text-3xl mb-6">
+                                🚀
+                            </div>
+
+                            <h3 className="text-xl font-bold text-slate-900 mb-3">
+                                15 Days Intensive
+                            </h3>
+
+                            <p className="text-slate-600 leading-relaxed">
+                                A focused and fast-paced learning experience designed to maximize growth.
+                            </p>
+                        </div>
+
+                        {/* Card 2 */}
+                        <div className="group relative bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-all"></div>
+
+                            <div className="w-16 h-16 rounded-2xl bg-pink-100 flex items-center justify-center text-3xl mb-6">
+                                👨‍💻
+                            </div>
+
+                            <h3 className="text-xl font-bold text-slate-900 mb-3">
+                                Industry Mentors
+                            </h3>
+
+                            <p className="text-slate-600 leading-relaxed">
+                                Learn directly from experienced professionals working in top companies.
+                            </p>
+                        </div>
+
+                        {/* Card 3 */}
+                        <div className="group relative bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-all"></div>
+
+                            <div className="w-16 h-16 rounded-2xl bg-amber-100 flex items-center justify-center text-3xl mb-6">
+                                💻
+                            </div>
+
+                            <h3 className="text-xl font-bold text-slate-900 mb-3">
+                                Hands-On Projects
+                            </h3>
+
+                            <p className="text-slate-600 leading-relaxed">
+                                Build real-world projects that strengthen your portfolio and resume.
+                            </p>
+                        </div>
+
+                        {/* Card 4 */}
+                        <div className="group relative bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-all"></div>
+
+                            <div className="w-16 h-16 rounded-2xl bg-cyan-100 flex items-center justify-center text-3xl mb-6">
+                                🏆
+                            </div>
+
+                            <h3 className="text-xl font-bold text-slate-900 mb-3">
+                                Certificate
+                            </h3>
+
+                            <p className="text-slate-600 leading-relaxed">
+                                Earn an industry-recognized certificate to showcase your skills.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    {/* Extra Feature Row */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-12">
+
+                        <div className="bg-white rounded-2xl border border-slate-200 p-5 text-center">
+                            <h4 className="font-bold text-slate-900">Resume Review</h4>
+                        </div>
+
+                        <div className="bg-white rounded-2xl border border-slate-200 p-5 text-center">
+                            <h4 className="font-bold text-slate-900">Mock Interviews</h4>
+                        </div>
+
+                        <div className="bg-white rounded-2xl border border-slate-200 p-5 text-center">
+                            <h4 className="font-bold text-slate-900">Placement Support</h4>
+                        </div>
+
+                        <div className="bg-white rounded-2xl border border-slate-200 p-5 text-center">
+                            <h4 className="font-bold text-slate-900">Community Access</h4>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <section className="w-full py-20 bg-white">
+                <div className="w-full px-4 sm:px-6 lg:px-10">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+                        {/* Left Content */}
+                        <div>
+                            <span className="inline-flex items-center px-4 py-2 rounded-full bg-orange-50 text-orange-600 border border-orange-100 text-sm font-semibold">
+                                ✨ BENEFITS
+                            </span>
+
+                            <h2 className="mt-6 text-4xl lg:text-5xl font-bold leading-tight text-slate-900">
+                                This isn't just training.
+                                <span className="block bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent">
+                                    It's a launchpad.
+                                </span>
+                            </h2>
+
+                            <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-xl">
+                                Designed by industry experts who know exactly what top companies
+                                look for in fresh graduates. Learn practical skills that matter.
+                            </p>
+
+                            <button className="mt-8 px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-pink-600 text-white font-semibold shadow-lg hover:scale-105 transition duration-300">
+                                Apply Now →
+                            </button>
+                        </div>
+
+                        {/* Right Cards */}
+                        <div className="grid sm:grid-cols-2 gap-6">
+
+                            <div className="group bg-white border border-slate-200 rounded-3xl p-6 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                                <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-indigo-500 to-pink-500 flex items-center justify-center text-white text-2xl">
+                                    🚀
+                                </div>
+
+                                <h3 className="mt-5 text-xl font-bold text-slate-900">
+                                    Industry-Ready Skills
+                                </h3>
+
+                                <p className="mt-3 text-slate-600">
+                                    Bridge the gap between academic learning and real-world job requirements.
+                                </p>
+                            </div>
+
+                            <div className="group bg-white border border-slate-200 rounded-3xl p-6 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                                <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-purple-500 to-indigo-500 flex items-center justify-center text-white text-2xl">
+                                    📈
+                                </div>
+
+                                <h3 className="mt-5 text-xl font-bold text-slate-900">
+                                    Career Acceleration
+                                </h3>
+
+                                <p className="mt-3 text-slate-600">
+                                    Fast-track your career with placement assistance and networking.
+                                </p>
+                            </div>
+
+                            <div className="group bg-white border border-slate-200 rounded-3xl p-6 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                                <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-pink-500 to-orange-500 flex items-center justify-center text-white text-2xl">
+                                    🎯
+                                </div>
+
+                                <h3 className="mt-5 text-xl font-bold text-slate-900">
+                                    Placement Support
+                                </h3>
+
+                                <p className="mt-3 text-slate-600">
+                                    Resume reviews, mock interviews and hiring partner referrals.
+                                </p>
+                            </div>
+
+                            <div className="group bg-white border border-slate-200 rounded-3xl p-6 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                                <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center text-white text-2xl">
+                                    🤝
+                                </div>
+
+                                <h3 className="mt-5 text-xl font-bold text-slate-900">
+                                    Peer Network
+                                </h3>
+
+                                <p className="mt-3 text-slate-600">
+                                    Join a community of ambitious students and industry mentors.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section className="w-full py-20 bg-gradient-to-b from-white via-slate-50 to-white">
+                <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                    {/* Badge */}
+                    <div className="flex justify-center">
+                        <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-emerald-200 bg-emerald-50 text-emerald-600 font-semibold text-sm">
+                            ✅ ELIGIBILITY
+                        </span>
+                    </div>
+
+                    {/* Heading */}
+                    <div className="text-center mt-6 mb-12">
+                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900">
+                            Who can{" "}
+                            <span className="bg-gradient-to-r from-emerald-500 to-green-600 bg-clip-text text-transparent">
+                                apply?
+                            </span>
+                        </h2>
+
+                        <p className="mt-4 text-slate-600 text-lg">
+                            Simple eligibility criteria to join the program.
+                        </p>
+                    </div>
+
+                    {/* Eligibility Cards */}
+                    <div className="space-y-5">
+
+                        {[
+                            "Currently enrolled in a college/university (any year, any branch)",
+                            "Strong desire to learn and apply new concepts",
+                            "Commitment to attend all program sessions",
+                            "Basic understanding of computers and the internet",
+                            "Enthusiasm to build a career in technology and innovation",
+                        ].map((item, index) => (
+                            <div
+                                key={index}
+                                className="group bg-white border border-slate-200 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-xl hover:border-emerald-300 hover:-translate-y-1 transition-all duration-300"
+                            >
+                                <div className="flex items-center gap-4">
+                                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center text-xl">
+                                        ✅
+                                    </div>
+
+                                    <p className="text-slate-800 font-medium text-base md:text-lg">
+                                        {item}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Bottom Info */}
+                    <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-5">
+
+                        <div className="bg-white border border-slate-200 rounded-2xl p-5 text-center">
+                            <h3 className="text-2xl font-bold text-emerald-600">15 Days</h3>
+                            <p className="text-slate-600 mt-1">Intensive Learning</p>
+                        </div>
+
+                        <div className="bg-white border border-slate-200 rounded-2xl p-5 text-center">
+                            <h3 className="text-2xl font-bold text-emerald-600">100%</h3>
+                            <p className="text-slate-600 mt-1">Practical Approach</p>
+                        </div>
+
+                        <div className="bg-white border border-slate-200 rounded-2xl p-5 text-center">
+                            <h3 className="text-2xl font-bold text-emerald-600">Live</h3>
+                            <p className="text-slate-600 mt-1">Mentor Support</p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+
+                {/* Background Blur Effects */}
+                <div className="absolute top-0 left-0 w-80 h-80 bg-blue-200/30 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 right-0 w-80 h-80 bg-indigo-200/30 rounded-full blur-3xl"></div>
+
+                <div className="relative z-10 max-w-4xl mx-auto">
+
+                    {/* Heading */}
+                    <div className="text-center mb-14">
+                        <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-blue-100 bg-blue-50 text-blue-600 text-sm font-semibold shadow-sm">
+                            💬 FAQ
+                        </span>
+
+                        <h2 className="mt-5 text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                            Got <span className="text-blue-600">Questions?</span>
+                        </h2>
+
+                        <p className="mt-5 text-gray-500 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+                            Find answers to the most commonly asked questions about our
+                            internship programs, certificates, schedules, and career
+                            opportunities.
+                        </p>
+                    </div>
+
+                    {/* FAQ Cards */}
+                    <div className="space-y-5">
+                        {faqs.map((faq, index) => (
+                            <div
+                                key={index}
+                                className={`group overflow-hidden rounded-3xl border bg-white/80 backdrop-blur-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl
+              ${openIndex === index
+                                        ? "border-blue-200 shadow-xl shadow-blue-100"
+                                        : "border-gray-100 shadow-sm hover:border-blue-200"
+                                    }`}
+                            >
+                                <button
+                                    onClick={() => toggleFAQ(index)}
+                                    className="w-full flex items-center justify-between text-left px-6 md:px-8 py-6"
+                                >
+                                    <h3 className="text-base md:text-lg font-semibold text-gray-900 pr-4">
+                                        {faq.question}
+                                    </h3>
+
+                                    <div
+                                        className={`flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300
+                  ${openIndex === index
+                                                ? "bg-blue-600 text-white rotate-180"
+                                                : "bg-blue-50 text-blue-600"
+                                            }`}
+                                    >
+                                        <ChevronDown size={20} />
+                                    </div>
+                                </button>
+
+                                {/* Smooth Accordion */}
+                                <div
+                                    className={`grid transition-all duration-500 ease-in-out ${openIndex === index
+                                            ? "grid-rows-[1fr] opacity-100"
+                                            : "grid-rows-[0fr] opacity-0"
+                                        }`}
+                                >
+                                    <div className="overflow-hidden">
+                                        <div className="px-6 md:px-8 pb-6 text-gray-600 leading-relaxed">
+                                            {faq.answer}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                </div>
+            </section>
         </>
     )
 }
