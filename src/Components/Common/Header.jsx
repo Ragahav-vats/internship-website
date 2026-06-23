@@ -4,10 +4,10 @@ import logo from "../../assets/logo.jpeg";
 import { Link } from 'react-router';
 
 const NAV_LINKS = [
-  { label: "Courses", href: "#" },
+  { label: "Courses", to: "/courses" },
   { label: "Masterclasses", href: "#" },
-  { label: "About Us", href: "#" },
-  { label: "Contact", href: "#" },
+  { label: "About Us", href: "/about-us" },
+  { label: "Contact", href: "/contact-us" },
   { label: "Blogs", href: "#" },
   { label: "Schooling Programs", href: "#" },
   // { label: "Internship", to: "/internship" },
@@ -21,7 +21,7 @@ const NAV_LINKS = [
 
 const PRODUCTS = [
   {label:"Internship program", to: "/program"},
-  {label:"Summer Internship program",  to: "/Summer Internship program" }
+  {label:"Summer Internship",  to: "/Summer Internship program" }
 ]
 
 export default function Header() {
@@ -62,6 +62,7 @@ export default function Header() {
               {NAV_LINKS.map(({ label, href }) =>
                 label === "Courses" ? (
                   <div key={label} className="relative group">
+                    <Link to="/courses">
                     <button
                       className="flex items-center gap-1 text-sm font-medium text-gray-600
                    hover:text-indigo-500 transition-colors duration-800"
@@ -77,6 +78,7 @@ export default function Header() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
+                    </Link>
 
                     {/* Dropdown */}
                     <div
@@ -97,23 +99,24 @@ export default function Header() {
                       </a>
 
                       <a href="#" className="block px-4 py-2 hover:bg-indigo-50 hover:text-indigo-600">
-                        React JS
+                        AI & ML
                       </a>
 
                       <a href="#" className="block px-4 py-2 hover:bg-indigo-50 hover:text-indigo-600">
-                        Node JS
+                        Data Science
                       </a>
                     </div>
                   </div>
                 ) : (
-                  <a
+                  <Link
                     key={label}
-                    href={href}
+                    to={href}
+                    // to="/contact-us"
                     onClick={() => setActiveLink(label)}
                     className="text-sm font-medium text-gray-600 hover:text-indigo-500"
                   >
                     {label}
-                  </a>
+                  </Link>
                 )
               )}
 
