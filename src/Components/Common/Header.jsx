@@ -5,11 +5,11 @@ import { Link } from 'react-router';
 
 const NAV_LINKS = [
   { label: "Courses", to: "/courses" },
-  { label: "Masterclasses", href: "#" },
+  { label: "Masterclasses", href: "/masterclasses" },
   { label: "About Us", href: "/about-us" },
   { label: "Contact", href: "/contact-us" },
-  { label: "Blogs", href: "#" },
-  { label: "Schooling Programs", href: "#" },
+  { label: "Blogs", href: "/blogs" },
+  { label: "Schooling Programs", href: "schooling-programs" },
   // { label: "Internship", to: "/internship" },
 ];
 
@@ -111,7 +111,6 @@ export default function Header() {
                   <Link
                     key={label}
                     to={href}
-                    // to="/contact-us"
                     onClick={() => setActiveLink(label)}
                     className="text-sm font-medium text-gray-600 hover:text-indigo-500"
                   >

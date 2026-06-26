@@ -11,6 +11,9 @@ import SummerInternship from "./subComponents/SummerInternship";
 import Courses from "./Components/Courses";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
+import Blogs from "./Components/Blogs";
+import MasterClasses from "./Components/MasterClasses";
+import Programs from "./Components/Programs";
 
 
 const root = document.getElementById("root");
@@ -27,6 +30,9 @@ ReactDOM.createRoot(root).render(
       <Route path="/courses" element={<Courses/>} />
       <Route path="/about-us" element={<About/>} />
       <Route path="/contact-us" element={<Contact/>} />
+      <Route path="/blogs" element={<Blogs/>} />
+      <Route path="/masterclasses" element={<MasterClasses/>} />
+      <Route path="/schooling-programs" element={<Programs/>} />
       </Route>
     </Routes>
   </BrowserRouter>,
